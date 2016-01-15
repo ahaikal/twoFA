@@ -1,0 +1,38 @@
+<%= form_tag(:two_factor_authentications, :method => :put) do  %>
+    <div class="col-md-12">
+        <div class="modal-dialog" style="margin-bottom:0">
+            <div class="modal-content">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Enter Security Code</h3>
+                </div>
+                <div class="panel-body">
+                  <form role="form">
+                  <div>
+                    <%= display_flash %>
+                  </div>
+
+                  	<p>It looks like you haven't logged in from this browser or device before.<br /></p>
+                  		<%= link_to "Please click here to request the security code and enter it below.", edit_two_factor_authentications_path %> <br/>
+
+                      <fieldset>
+
+                        <div class="form-group">
+                        <%= label_tag :code, "Two Factor Code", class: "control-label" %>
+                          <div class="col-sm-9 col-sm-offset-1">
+                            <%= text_field_tag :code, nil, class: 'form-control', autofocus: true %>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <%= submit_tag "Submit", class: 'btn btn-lg btn-success btn-block' %>
+                        </div>
+
+                          <%= link_to "Sign out", destroy_session_path(current_user), :method => :delete %>
+                      </fieldset>
+
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %> 
